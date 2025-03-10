@@ -1,0 +1,18 @@
+[
+    {
+      "id": "1",
+      "username": "user_en",
+      "password": "password123",
+      "country": "en",
+      "firstName": "John",
+      "lastName": "Doe"
+    },
+    {
+      "id": "2",
+      "username": "user_ca",
+      "password": "password123",
+      "country": "ca",
+      "firstName": "Jane",
+      "lastName": "Smith"
+    }
+  ]
