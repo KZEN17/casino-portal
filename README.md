@@ -117,14 +117,6 @@ npm install
 npm run dev
 ```
 
-### Environment Setup
-
-Create a `.env.local` file in the root directory:
-
-```
-NEXT_PUBLIC_API_URL=your-api-url
-```
-
 ### Build for Production
 
 ```bash
@@ -164,15 +156,6 @@ npm run test:coverage
 - **TypeScript**: Strong typing for better developer experience and fewer bugs
 - **ESLint**: Code quality and consistency
 - **Prettier**: Code formatting
-
-## Future Improvements
-
-- Implement TanStack Query for data fetching
-- Add IndexedDB for offline game data support
-- Add WebSocket support for real-time updates
-- Implement feature flags for market-specific features
-- Add Docker support for easier deployment
-- Expand test coverage with more component tests
 
 ## License
 
