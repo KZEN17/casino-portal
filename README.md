@@ -1,36 +1,179 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Casino Portal Application
+
+A modern, scalable, and modular casino game portal built with Next.js and React. This application supports multiple markets, themes, and casino brands.
+
+## Project Overview
+
+This project implements a casino portal with the following features:
+
+- Multiple market support (English and Canadian)
+- User authentication and market-specific routing
+- Light/dark theme support with market-specific styling
+- Casino game lobby with filtering, sorting, and pagination
+- Game details pages with conditional UI based on login status
+- User profile management
+
+### Technology Stack
+
+- **Frontend**: Next.js 14, React 18, TypeScript
+- **State Management**: Redux Toolkit (RTK)
+- **Styling**: Tailwind CSS with CSS variables for theming
+- **Routing**: Next.js App Router
+- **Authentication**: JWT-based with cookie storage
+- **Testing**: Jest
+
+## Project Structure
+
+```
+src/
+├── app/
+│   ├── [marketId]/         # Dynamic routes for markets (en/ca)
+│   │   ├── casino/         # Casino games lobby
+│   │   │   └── [slug]/     # Individual game pages
+│   │   ├── my-profile/     # User profile settings
+│   │   └── page.tsx        # Market-specific landing page
+│   ├── login/              # Login page
+│   ├── components/         # Shared components
+│   │   ├── auth/           # Authentication components
+│   │   ├── casino/         # Casino-specific components
+│   │   ├── common/         # Common UI components
+│   │   ├── games/          # Game-related components
+│   │   ├── layouts/        # Layout components
+│   │   └── profile/        # Profile-related components
+│   ├── data/               # Data sources (users, games)
+│   ├── providers/          # Context providers
+│   ├── store/              # Redux store
+│   │   └── slices/         # Redux slices
+│   ├── utils/              # Utility functions
+│   ├── constants.ts        # Application constants
+│   ├── middleware.ts       # Next.js middleware for routing
+│   └── types.ts            # TypeScript types
+```
+
+## Features
+
+### Authentication System
+
+- Simple JSON-based user authentication
+- Market-specific user accounts (en/ca)
+- Middleware to prevent market switching
+- Protected routes requiring authentication
+
+### Theming System
+
+- Light and dark mode support
+- Market-specific color schemes (blue for English, red for Canadian)
+- Theme toggle in the navigation bar
+- Theme persistence using localStorage
+- CSS variables for consistent styling
+
+### Casino Games Lobby
+
+- Game card grid with responsive layout
+- Advanced filtering by provider, category, and game features
+- Search functionality
+- Sorting options (name, provider, category)
+- Pagination for large datasets
+
+### Game Details Page
+
+- Individual game page for each game
+- Responsive layout with game thumbnail and details
+- "Play for Real" button for logged-in users
+- "Play for Free" button for logged-out users
+- Game metadata and features display
+
+### User Profile
+
+- View and edit user profile information
+- Update first name and last name
+- Success notification after profile update
+- Market-specific preferences
+
+### Loading States
+
+- Consistent loading indicators throughout the application
+- Full-page loaders for route transitions
+- Component-level loading states
+- Error state handling
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18+ and npm
+
+### Installation
 
 ```bash
+# Clone the repository
+git clone https://github.com/yourusername/casino-portal.git
+cd casino-portal
+
+# Install dependencies
+npm install
+
+# Start the development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Environment Setup
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Create a `.env.local` file in the root directory:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+NEXT_PUBLIC_API_URL=your-api-url
+```
 
-## Learn More
+### Build for Production
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run build
+npm start
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Styling Approach
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+This project uses Tailwind CSS with CSS variables for theming, which provides several advantages:
 
-## Deploy on Vercel
+1. **Consistent Theme Variables**: CSS variables allow for easy theme switching
+2. **Market-Specific Styling**: Different color schemes for each market
+3. **Dark/Light Mode**: Seamless switching between light and dark themes
+4. **Component-Based Design**: Utility classes make components modular and reusable
+5. **Minimal CSS Footprint**: Only the CSS actually used is included in the bundle
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The theming system is implemented through CSS variables defined in globals.css and applied via the ThemeProvider component.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Testing
+
+The application includes comprehensive tests using Jest:
+
+```bash
+# Run all tests
+npm test
+
+# Run tests in watch mode
+npm run test:watch
+
+# Generate coverage report
+npm run test:coverage
+```
+
+## Code Quality
+
+- **TypeScript**: Strong typing for better developer experience and fewer bugs
+- **ESLint**: Code quality and consistency
+- **Prettier**: Code formatting
+
+## Future Improvements
+
+- Implement TanStack Query for data fetching
+- Add IndexedDB for offline game data support
+- Add WebSocket support for real-time updates
+- Implement feature flags for market-specific features
+- Add Docker support for easier deployment
+- Expand test coverage with more component tests
+
+## License
+
+This project is licensed under the MIT License.
