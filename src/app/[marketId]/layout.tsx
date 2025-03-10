@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 import { MARKETS } from '../constants';
 import MarketLayout from '../components/layout/MarketLayout';
@@ -11,6 +9,7 @@ interface MarketLayoutProps {
   };
 }
 
+// This is a server component, no 'use client' directive
 export default function RootMarketLayout({ children, params }: MarketLayoutProps) {
   const { marketId } = params;
   

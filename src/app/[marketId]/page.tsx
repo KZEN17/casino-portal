@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 import LandingPage from '../components/LandingPage';
 
@@ -9,6 +7,7 @@ interface MarketHomeProps {
   };
 }
 
+// This is a server component, no 'use client' directive
 export default function MarketHome({ params }: MarketHomeProps) {
   const { marketId } = params;
   

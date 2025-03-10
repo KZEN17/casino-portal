@@ -28,11 +28,51 @@ export interface RootState {
 }
 
 export interface Game {
-  id: string;
+  id: number;
   name: string;
   slug: string;
-  thumbnail: string;
-  provider: string;
-  categories: string[];
-  markets: Market[];
+  desktopGameId: string;
+  mobileGameId: string;
+  meta: {
+    thumbnail: {
+      src: string;
+    };
+  };
+  licenses: {
+    id: number;
+    key: string;
+    name: string;
+  }[];
+  aspectRatio: string;
+  hasJackpot: boolean;
+  demoModeLoggedIn: boolean;
+  demoModeLoggedOut: boolean;
+  isLiveGame: boolean;
+  provider: {
+    logo: string;
+    meta: {
+      vendorId: string;
+    };
+    name: string;
+    aggregator: string;
+    externalKey: string;
+  };
+  tags: {
+    id: number;
+    name: string;
+    type: number;
+  }[];
+  category: {
+    id: number;
+    name: string;
+  };
+  positions: Record<string, number>;
+  localisation: Record<string, {
+    meta: {
+      thumbnail: {
+        src: string;
+      };
+    };
+    name: string;
+  }>;
 }
